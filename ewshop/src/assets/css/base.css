@@ -1,0 +1,13 @@
+@import "./normalize.css";
+*,*::before,*:after{
+    margin: 0;padding: 0;box-sizing: border-box;
+}
+:root{
+    --color--text:#777;
+    --color--background:green
+}
+body{user-select: none;width: 100vw;}
+a{
+    color: var(--color--text);
+    text-decoration: none;
+}
