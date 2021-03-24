@@ -7,15 +7,14 @@
       <div class="wrapper">
         <div class="content">
           <div ref="barref">
-            <div class="banner">
-                <img src="~assets/image/lulubanner.jpeg"/>
-            </div>
+            <HomeSwiper :banner="banners"></HomeSwiper>
             <Recommented :recomments = "recos"></Recommented>
           </div>
           <TabControl :title="['畅销','新书','精选']" @tabclick="tabclick"></TabControl>
           <GoodsList :goods="showGoods"></GoodsList>
         </div>
       </div>
+      <BackTop v-show="istabshow" @toTop="toTop"></BackTop>
     </div>
 </template>
 
@@ -24,6 +23,8 @@
     import Recommented from 'views/home/childComs/Recommented'
     import TabControl from 'components/content/tabControl/TabControl'
     import GoodsList from 'components/content/goods/GoodsList'
+    import BackTop from "../../components/common/backtop/BackTop";
+    import HomeSwiper from "./childComs/HomeSwiper";
     import BScroll from 'better-scroll'
     import {getHomeAllData,getHomeGoods} from "../../network/home";
     import {onMounted,ref,reactive,computed,watchEffect,nextTick} from 'vue'
@@ -38,7 +39,7 @@
                 recommend:{page:1,list:[]},
                 new:{page:1,list:[]},
             })
-
+          let banners = ref([])
             const currentGoods = ref("sales")
 
 
@@ -46,6 +47,7 @@
                 getHomeAllData().then(res=>{
                     console.log(res)
                     recos.value = res.goods.data
+                  banners.value = res.slides
                 }).catch(err=>{
                     console.log(err)
                 })
@@ -114,20 +116,28 @@
             })
 
           })
+
+          const toTop=()=>{
+              scroll.scrollTo(0,0,500)
+          }
             return {
                 recos,
                 tabclick,
                 goods,
                 showGoods,
               istabshow,
-              barref
+              barref,
+              toTop,
+              banners
             }
         },
         components:{
             NavBar,
             Recommented,
             TabControl,
-            GoodsList
+            GoodsList,
+          BackTop,
+          HomeSwiper
         }
     }
 </script>

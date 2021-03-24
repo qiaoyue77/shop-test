@@ -2,5 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import 'vant/lib/index.css';
+import { Swipe, SwipeItem,Lazyload ,Badge ,Sidebar, SidebarItem,Collapse, CollapseItem } from 'vant';
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App)
+    .use(Swipe).use(SwipeItem).use(Lazyload ).use(Badge ).use(Sidebar).use(SidebarItem).use(Collapse).use(CollapseItem)
+    .use(store).use(router).mount('#app')

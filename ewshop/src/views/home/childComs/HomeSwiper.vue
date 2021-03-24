@@ -1,0 +1,26 @@
+<template>
+  <van-swipe v-if="banner.length" class="my-swipe" :autoplay="3000" indicator-color="white">
+    <van-swipe-item v-for="(item,index) in banner" :key="index">
+      <img  v-lazy="item.img_url"/>
+    </van-swipe-item>
+
+  </van-swipe>
+</template>
+
+<script>
+export default {
+name: "HomeSwiper",
+  props:{
+    banner:{
+      type:Array,
+      default(){
+        return []
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+img{height:170px;width:100%}
+</style>

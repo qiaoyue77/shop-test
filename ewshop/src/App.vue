@@ -1,12 +1,22 @@
 <template>
-
-  <router-view/>
+<router-view v-slot="{Component}">
+  <transition>
+    <keep-alive>
+      <component :is="Component"></component>
+    </keep-alive>
+  </transition>
+</router-view>
+<!--  <router-view/>-->
   <div id="nav">
     <router-link class="nav-item" to="/">
       <i class="iconfont icon-shouye"></i>
       <div>首页</div></router-link>
     <router-link class="nav-item" to="/category"><i class="iconfont icon-fenlei"></i><div>分类</div></router-link>
-    <router-link class="nav-item" to="/shopcart"><i class="iconfont icon-dilanxianxingiconyihuifu_huabanfuben "></i><div>购物车</div></router-link>
+    <router-link class="nav-item" to="/shopcart">
+      <van-badge :content="20" max="9">
+        <i class="iconfont icon-dilanxianxingiconyihuifu_huabanfuben "></i>
+      </van-badge>
+      <div>购物车</div></router-link>
     <router-link class="nav-item" to="/profile"><i class="iconfont icon-tubiaozhizuomoban"></i><div>我的</div></router-link>
   </div>
 </template>
