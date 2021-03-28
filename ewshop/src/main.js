@@ -3,8 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'vant/lib/index.css';
-import { Swipe, SwipeItem,Lazyload ,Badge ,Sidebar, SidebarItem,Collapse, CollapseItem } from 'vant';
+import { Swipe, SwipeItem,Lazyload ,Badge ,Sidebar, SidebarItem,Collapse, CollapseItem ,Tab, Tabs,Card  ,Image as VanImage,Tag,Button,Form ,Field,
+    Checkbox, CheckboxGroup,Stepper,SwipeCell,SubmitBar   } from 'vant';
 
 createApp(App)
-    .use(Swipe).use(SwipeItem).use(Lazyload ).use(Badge ).use(Sidebar).use(SidebarItem).use(Collapse).use(CollapseItem)
+    .use(Swipe).use(SwipeItem).use(Lazyload ).use(Badge ).use(Sidebar).use(SidebarItem).use(Collapse).use(CollapseItem).use(Form ).use(Field )
+    .use(Tab).use(Tabs).use(Card ).use(VanImage).use(Tag).use(Button).use(Checkbox).use(CheckboxGroup)
+    .use(Stepper ).use(SwipeCell ).use(SubmitBar )
     .use(store).use(router).mount('#app')

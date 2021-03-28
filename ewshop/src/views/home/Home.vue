@@ -28,6 +28,7 @@
     import BScroll from 'better-scroll'
     import {getHomeAllData,getHomeGoods} from "../../network/home";
     import {onMounted,ref,reactive,computed,watchEffect,nextTick} from 'vue'
+
     export default {
         name: "Home",
         setup(){
@@ -120,6 +121,7 @@
           const toTop=()=>{
               scroll.scrollTo(0,0,500)
           }
+
             return {
                 recos,
                 tabclick,
@@ -128,7 +130,8 @@
               istabshow,
               barref,
               toTop,
-              banners
+              banners,
+
             }
         },
         components:{

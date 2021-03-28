@@ -1,10 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store'
+import {Notify} from "vant";
 
 const Home = () => import(/* webpackChunkName: "about" */ '../views/home/Home')
 const Category = () => import(/* webpackChunkName: "about" */ '../views/category/Category')
 const Profile = () => import(/* webpackChunkName: "about" */ '../views/profile/Profile')
 const Detail = () => import(/* webpackChunkName: "about" */ '../views/detail/Detail')
 const Shopcart = () => import(/* webpackChunkName: "about" */ '../views/shopcart/Shopcart')
+const Register = ()=> import("../views/profile/Register")
+const Login = ()=> import("../views/profile/Login")
 const routes = [
   {
     path: '/',
@@ -35,9 +39,27 @@ const routes = [
     name: 'Profile',
     component: Profile,
       meta:{
-          title:"个人中心"
+          title:"个人中心",
+        isAuthRequired:true
       }
-  },{
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta:{
+      title:"注册"
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta:{
+      title:"登录"
+    }
+  },
+  {
     path: '/detail',
     name: 'Detail',
     component: Detail,
@@ -50,7 +72,8 @@ const routes = [
     name: 'Shopcart',
     component: Shopcart,
       meta:{
-          title:"购物车"
+          title:"购物车",
+        isAuthRequired:true
       }
   },
   {
@@ -69,7 +92,14 @@ const router = createRouter({
 })
 
 router.beforeEach((to,from,next)=>{
+  if(to.meta.isAuthRequired && store.state.user.isLogin === false){
+    Notify('请先登录')
+    return next('/login')
+  }else{
+    next()
+  }
+
   document.title = to.meta.title
-  next()
+
 })
 export default router
