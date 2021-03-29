@@ -10,7 +10,7 @@ export function addCart(data) {
 
 export function modifyCart(id,data) {
     return request({
-        url:`/api/carts/${id}`,
+        url:'/api/carts/'+id,
         method:'put',
         data
     })
@@ -33,7 +33,7 @@ export function getCart(data='') {
 
 export function deleteCartItem(id) {
     return request({
-        url:`/api/carts/${id}`,
+        url:'/api/carts/'+id,
         method:'delete',
     })
 }
