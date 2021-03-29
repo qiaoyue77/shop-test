@@ -9,6 +9,8 @@ const Detail = () => import(/* webpackChunkName: "about" */ '../views/detail/Det
 const Shopcart = () => import(/* webpackChunkName: "about" */ '../views/shopcart/Shopcart')
 const Register = ()=> import("../views/profile/Register")
 const Login = ()=> import("../views/profile/Login")
+import AddressEdit from "../views/profile/AddressEdit";
+import AddAddress from "../views/profile/AddAddress";
 const routes = [
   {
     path: '/',
@@ -75,6 +77,22 @@ const routes = [
           title:"购物车",
         isAuthRequired:true
       }
+  },
+  {
+    path: '/addressEdit',
+    name: 'AddressEdit',
+    component: AddressEdit,
+    meta:{
+      title:"修改地址"
+    }
+  },
+  {
+    path: '/addAddress',
+    name: 'AddAddress',
+    component: AddAddress,
+    meta:{
+      title:"添加地址"
+    }
   },
   {
     path: '/about',
