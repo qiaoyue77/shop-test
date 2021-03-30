@@ -9,8 +9,12 @@ const Detail = () => import(/* webpackChunkName: "about" */ '../views/detail/Det
 const Shopcart = () => import(/* webpackChunkName: "about" */ '../views/shopcart/Shopcart')
 const Register = ()=> import("../views/profile/Register")
 const Login = ()=> import("../views/profile/Login")
-import AddressEdit from "../views/profile/AddressEdit";
-import AddAddress from "../views/profile/AddAddress";
+const AddressEdit = ()=> import ("../views/profile/AddressEdit") ;
+const AddAddress = ()=> import ( "../views/profile/AddAddress") ;
+const Address = ()=> import("../views/profile/Address")
+const CreateOrder = ()=> import("../views/order/CreateOrder")
+const Order = ()=> import("../views/order/Order")
+const OrderDetail = ()=> import("../views/order/OrderDetail")
 const routes = [
   {
     path: '/',
@@ -92,6 +96,38 @@ const routes = [
     component: AddAddress,
     meta:{
       title:"添加地址"
+    }
+  },
+  {
+    path: '/address',
+    name: 'Address',
+    component: Address,
+    meta:{
+      title:"地址"
+    }
+  },
+  {
+    path: '/createOrder',
+    name: 'CreateOrder',
+    component: CreateOrder,
+    meta:{
+      title:"生成订单"
+    }
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order,
+    meta:{
+      title:"订单"
+    }
+  },
+  {
+    path: '/orderDetail',
+    name: 'OrderDetail',
+    component: OrderDetail,
+    meta:{
+      title:"订单详情"
     }
   },
   {

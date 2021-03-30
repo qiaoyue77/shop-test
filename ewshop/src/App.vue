@@ -64,4 +64,5 @@
   }
 }
   img{max-width: 100%}
+  .van-address-list__bottom{bottom: 100px!important;}
 </style>

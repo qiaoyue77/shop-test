@@ -19,8 +19,7 @@ export function editAddress(id,params){
 export function deleteAddress(id){
     return request({
         url:'/api/address/'+id,
-        method:'delete',
-        params
+        method:'delete'
     })
 }
 
